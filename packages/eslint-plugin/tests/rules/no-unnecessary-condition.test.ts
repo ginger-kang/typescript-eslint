@@ -445,6 +445,15 @@ declare const key: Key;
 
 foo?.[key]?.trim();
     `,
+    `
+const latencies: number[][] = [];
+
+function recordData(): void {
+    if (!latencies[0])
+        latencies[0] = [];
+    latencies[0].push(4);
+}
+    `,
   ],
   invalid: [
     // Ensure that it's checking in all the right places
