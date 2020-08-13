@@ -454,6 +454,17 @@ function recordData(): void {
     latencies[0].push(4);
 }
     `,
+    `
+const latencies: number[] = [];
+
+function recordData(): void {
+    if (!latencies[0])
+        latencies[0] = [];
+    latencies[0].push(4);
+}
+
+recordData();
+    `,
   ],
   invalid: [
     // Ensure that it's checking in all the right places
