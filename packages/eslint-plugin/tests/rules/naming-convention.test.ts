@@ -801,6 +801,19 @@ ruleTester.run('naming-convention', rule, {
         },
       ],
     },
+    {
+      code: `
+        let foo = 1;
+      `,
+      options: [
+        {
+          selector: ['variable', 'parameter', 'property', 'accessor'],
+          types: ['boolean'],
+          format: ['PascalCase'],
+          prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
+        },
+      ],
+    },
   ],
   invalid: [
     {
