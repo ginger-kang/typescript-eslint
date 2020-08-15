@@ -837,7 +837,39 @@ ruleTester.run('naming-convention', rule, {
     },
     {
       code: `
-        let foo = 1;
+        let Foo = 1;
+      `,
+      parserOptions,
+      options: [
+        {
+          selector: 'variable',
+          types: ['boolean'],
+          format: ['PascalCase'],
+          prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
+        },
+        {
+          selector: 'parameter',
+          types: ['boolean'],
+          format: ['PascalCase'],
+          prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
+        },
+        {
+          selector: 'property',
+          types: ['boolean'],
+          format: ['PascalCase'],
+          prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
+        },
+        {
+          selector: 'accessor',
+          types: ['boolean'],
+          format: ['PascalCase'],
+          prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
+        },
+      ],
+    },
+    {
+      code: `
+        let Foo = 1;
       `,
       options: [
         {
@@ -884,19 +916,16 @@ ruleTester.run('naming-convention', rule, {
         declare const any_camelCase01: any;
         declare const any_camelCase02: any | null;
         declare const any_camelCase03: any | null | undefined;
-
         declare const string_camelCase01: string;
         declare const string_camelCase02: string | null;
         declare const string_camelCase03: string | null | undefined;
         declare const string_camelCase04: 'a' | null | undefined;
         declare const string_camelCase05: string | 'a' | null | undefined;
-
         declare const number_camelCase06: number;
         declare const number_camelCase07: number | null;
         declare const number_camelCase08: number | null | undefined;
         declare const number_camelCase09: 1 | null | undefined;
         declare const number_camelCase10: number | 2 | null | undefined;
-
         declare const boolean_camelCase11: boolean;
         declare const boolean_camelCase12: boolean | null;
         declare const boolean_camelCase13: boolean | null | undefined;
@@ -968,7 +997,6 @@ ruleTester.run('naming-convention', rule, {
           | undefined;
         declare const array_camelCase6: [] | null | undefined;
         declare const array_camelCase7: [number] | null | undefined;
-
         declare const array_camelCase8:
           | readonly number[]
           | Array<string>

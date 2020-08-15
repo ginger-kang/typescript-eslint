@@ -6,7 +6,7 @@ import {
 } from '@typescript-eslint/experimental-utils';
 import * as ts from 'typescript';
 import * as util from '../util';
-
+debugger;
 type MessageIds =
   | 'unexpectedUnderscore'
   | 'missingUnderscore'
@@ -819,6 +819,7 @@ type ParsedOptions = Record<SelectorsString, null | ValidatorFunction>;
 type Context = Readonly<TSESLint.RuleContext<MessageIds, Options>>;
 
 function parseOptions(context: Context): ParsedOptions {
+  debugger;
   const normalizedOptions = context.options.map(opt => normalizeOption(opt));
   return util.getEnumNames(Selectors).reduce((acc, k) => {
     acc[k] = createValidator(k, context, normalizedOptions);
