@@ -6,7 +6,7 @@ import {
 } from '@typescript-eslint/experimental-utils';
 import * as ts from 'typescript';
 import * as util from '../util';
-debugger;
+
 type MessageIds =
   | 'unexpectedUnderscore'
   | 'missingUnderscore'
@@ -253,6 +253,7 @@ function selectorSchema(
 }
 
 function selectorsSchema(): JSONSchema.JSONSchema4 {
+  debugger;
   return {
     type: 'object',
     properties: {
@@ -278,23 +279,23 @@ function selectorsSchema(): JSONSchema.JSONSchema4 {
           },
           additionalItems: false,
         },
+        modifiers: {
+          type: 'array',
+          items: {
+            type: 'string',
+            enum: util.getEnumNames(Modifiers),
+          },
+          additionalItems: false,
+        },
+        types: {
+          type: 'array',
+          items: {
+            type: 'string',
+            enum: util.getEnumNames(TypeModifiers),
+          },
+          additionalItems: false,
+        },
       },
-    },
-    modifiers: {
-      type: 'array',
-      items: {
-        type: 'string',
-        enum: util.getEnumNames(Modifiers),
-      },
-      additionalItems: false,
-    },
-    types: {
-      type: 'array',
-      items: {
-        type: 'string',
-        enum: util.getEnumNames(TypeModifiers),
-      },
-      additionalItems: false,
     },
     required: ['selector', 'format'],
     additionalProperties: false,
@@ -1259,6 +1260,7 @@ function isMetaSelector(
   return selector in MetaSelectors;
 }
 function normalizeOption(option: Selector): NormalizedSelector {
+  debugger;
   let weight = 0;
   option.modifiers?.forEach(mod => {
     weight |= Modifiers[mod];
@@ -1327,6 +1329,7 @@ function isCorrectType(
   config: NormalizedSelector,
   context: Context,
 ): boolean {
+  debugger;
   if (config.types === null) {
     return true;
   }
