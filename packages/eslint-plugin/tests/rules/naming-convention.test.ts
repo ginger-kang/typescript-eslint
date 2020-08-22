@@ -867,42 +867,63 @@ ruleTester.run('naming-convention', rule, {
     //     },
     //   ],
     // },
-    // {
-    //   code: `
-    //     const _foo = 'ad';
-    //   `,
-    //   options: [
-    //     {
-    //       selector: ['variable', 'function'],
-    //       format: ['camelCase'],
-    //       leadingUnderscore: 'allow',
-    //     },
-    //   ],
-    // },
     {
       code: `
-        let foo = 'asdd';
+        const _foo = 'ad';
+        function fooBoo() {}
+      `,
+      options: [
+        {
+          selector: ['variable', 'function'],
+          format: ['camelCase'],
+          leadingUnderscore: 'allow',
+        },
+      ],
+    },
+    {
+      code: `
+        let isFoo = 1;
+        class foo {
+          shouldBoo: number;
+        }
       `,
       parserOptions,
       options: [
         {
           selector: ['variable', 'parameter', 'property', 'accessor'],
+          types: ['number'],
+          format: ['PascalCase'],
+          prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
+        },
+      ],
+    },
+    {
+      code: `
+        class foo {
+          private readonly FooBoo: boolean;
+        }
+      `,
+      parserOptions,
+      options: [
+        {
+          selector: ['property', 'accessor'],
           types: ['boolean'],
+          modifiers: ['private', 'readonly'],
           format: ['PascalCase'],
         },
       ],
     },
     {
       code: `
-        let FooBoo = 1;
+        class foo {
+          private fooBoo: number;
+        }
       `,
-      parserOptions,
       options: [
         {
-          selector: ['variable', 'parameter', 'property', 'accessor'],
-          types: ['boolean'],
-          format: ['PascalCase'],
-          prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
+          selector: ['property', 'accessor'],
+          modifiers: ['private'],
+          format: ['camelCase'],
         },
       ],
     },
